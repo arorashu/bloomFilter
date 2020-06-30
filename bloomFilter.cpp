@@ -54,7 +54,7 @@ public:
 
             for (const auto &it: inputList) {
                 // set corresponding bits to true
-                for(int i=0; i<hashFunctions; i++) {
+                for (int i = 0; i < hashFunctions; i++) {
                     uint16_t pos = getIHash(it, i) % store.size();
                     store[pos] = true;
                 }
@@ -77,11 +77,11 @@ public:
      * @return false if the key dosent exist, if true, key may or may not exist
      */
     bool exists(int input) {
-        for(int i=0; i<hashFunctions; i++) {
+        for (int i = 0; i < hashFunctions; i++) {
             uint16_t pos = getIHash(input, i) % store.size();
             // debug
             cout << "input: " << input << ", pos: " << pos << endl;
-            if( !store[pos]) return false;
+            if (!store[pos]) return false;
         }
         return true;
     }
@@ -100,7 +100,7 @@ public:
         uint16_t upHash = (valHash >> 16) & mask;
         uint16_t downHash = (valHash & mask);
 
-        return upHash + (i*downHash);
+        return upHash + (i * downHash);
     }
 
 
@@ -117,8 +117,8 @@ public:
 int main() {
 
     vector<int> list(200);
-    for(int i=0; i<200; i++) {
-        list[i]=i;
+    for (int i = 0; i < 200; i++) {
+        list[i] = i;
     }
 //    cout << "Input list: ";
 //    for (const auto &it: list) {
@@ -137,6 +137,9 @@ int main() {
     cout << "bf size: " << f.getsize() << endl << "list size: "
          << sizeof(std::vector<int>) + (sizeof(int) * list.size())
          << endl << "bf class size: " << sizeof(BloomFilter) << endl;
+
+    cout << "Bool size: " << sizeof(bool) << ", char size: " << sizeof(char) << ", uint16_t: " << sizeof(uint16_t)
+         << ", uint32_t: " << sizeof(uint32_t) << endl;
 
     return 0;
 }

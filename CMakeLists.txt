@@ -4,3 +4,4 @@ project(bloomFilter)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(bloom bloomFilter.cpp fnv.h)
+add_executable(iblt iblt.cpp fnv.h)
